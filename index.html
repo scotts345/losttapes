@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Lost Tapes | A Mental Health Rave</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -10,10 +10,13 @@
 
     <style>
         :root {
+            /* FIX 1: Tells browsers NOT to turn your text black in dark mode */
+            color-scheme: dark;
             --hero-height: 100dvh; 
             --bg-1: url('grey.png'); 
             --bg-2: url('grey2.png');
             --fallback-color: #111111;
+            /* FIX 2: Stronger white definition */
             --text-primary: #ffffff;
             --accent-grey: #d1d1d1; 
             --left-gutter: 8vw; 
@@ -25,24 +28,26 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-snap-type: y mandatory;
-            scroll-behavior: smooth;
+        /* FIX 3: Container-based snapping is more reliable for iPhone 13 than body-snapping */
+        html, body {
             height: 100%;
-            overflow-x: hidden;
-        }
-
-        body {
-            width: 100%;
+            overflow: hidden; 
             background-color: var(--fallback-color);
-            color: var(--text-primary);
             font-family: 'DM Sans', sans-serif;
             -webkit-font-smoothing: antialiased;
+            color: var(--text-primary) !important;
+        }
+
+        .snap-container {
+            height: 100dvh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            -webkit-overflow-scrolling: touch;
         }
 
         .snap-section {
             width: 100%;
-            height: var(--hero-height);
+            height: 100dvh;
             display: flex;
             flex-direction: column;
             background-size: cover;
@@ -53,7 +58,7 @@
             position: relative;
         }
 
-        /* --- SCREEN 1: ADJUSTED FOR TIGHTER EDGES --- */
+        /* --- SCREEN 1 --- */
         .hero-1 { 
             background-image: var(--bg-1); 
             align-items: flex-start;
@@ -63,20 +68,20 @@
 
         .hero-1 .association {
             position: absolute;
-            top: 40px; /* Pushed closer to top edge */
+            top: 35px; /* Optical Edge spacing */
             left: var(--left-gutter);
             display: flex;
             align-items: baseline; 
             gap: 7px; 
             text-transform: uppercase;
             white-space: nowrap;
+            color: #ffffff !important;
         }
         
         .association .strapline {
             font-size: 0.65rem; 
             letter-spacing: 0.1em;
             font-weight: 500;
-            opacity: 0.8;
         }
         
         .association .brand-name {
@@ -86,7 +91,6 @@
         }
 
         .hero-content h1 {
-            /* Header size and alignment kept from your preferred version */
             font-size: clamp(4rem, 18vw, 10.5rem); 
             font-weight: 900;
             text-transform: uppercase;
@@ -94,6 +98,7 @@
             line-height: 0.72; 
             margin-left: -0.08em; 
             margin-bottom: 12px;
+            color: #ffffff !important;
         }
 
         .hero-content p {
@@ -102,11 +107,12 @@
             text-transform: uppercase;
             font-weight: 800;
             padding-left: 0.1em;
+            color: #ffffff !important;
         }
 
         .hero-1 .uni-logo-container {
             position: absolute;
-            bottom: 40px; /* Pushed closer to bottom edge */
+            bottom: 35px; /* Optical Edge spacing */
             left: var(--left-gutter);
         }
 
@@ -116,7 +122,7 @@
             display: block;
         }
 
-        /* --- SCREEN 2: UNTOUCHED --- */
+        /* --- SCREEN 2: ALL CONTENT RESTORED --- */
         .hero-2 { 
             background-image: var(--bg-2); 
             align-items: center;
@@ -127,153 +133,145 @@
         .info-grid {
             display: flex;
             flex-direction: column;
-            gap: 25px; 
+            gap: 15px; 
             max-width: 800px;
             width: 100%;
-            padding: 0 20px;
+            padding: 0 25px;
             align-items: center;
         }
 
         .details-box h2 {
-            font-size: 2.2rem;
+            font-size: clamp(1.5rem, 6vw, 2.2rem);
             letter-spacing: 0.15em;
             text-transform: uppercase;
             font-weight: 800;
             margin: 4px 0;
+            color: #ffffff !important;
         }
 
         .details-box p {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: var(--accent-grey);
-            letter-spacing: 0.2em;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            line-height: 1.6;
+            line-height: 1.4;
         }
 
         .countdown-container {
-            font-size: clamp(2.5rem, 12vw, 6rem);
+            font-size: clamp(2.5rem, 11vw, 5.5rem);
             font-weight: 700;
             font-variant-numeric: tabular-nums;
             margin: 5px 0;
+            color: #ffffff !important;
         }
 
         .collab-box {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
-            margin-top: 10px;
-            max-width: 550px;
+            padding-top: 15px;
+            max-width: 500px;
         }
 
         .collab-box h3 {
-            font-size: 0.75rem;
-            letter-spacing: 0.3em;
+            font-size: 0.7rem;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
             font-weight: 900;
-            margin-bottom: 12px;
+            margin-bottom: 8px;
+            color: #ffffff !important;
         }
 
         .collab-box p {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--accent-grey);
-            line-height: 1.6;
-            letter-spacing: 0.05em;
-            margin-bottom: 15px;
+            line-height: 1.5;
+            margin-bottom: 12px;
         }
 
         .collab-link {
             font-size: 0.7rem;
-            color: #ffffff;
+            color: #ffffff !important;
             text-transform: uppercase;
-            letter-spacing: 0.2em;
             text-decoration: none;
             border-bottom: 1px solid #ffffff;
-            padding-bottom: 2px;
             font-weight: 700;
         }
 
         .genres {
-            font-size: 0.6rem;
-            letter-spacing: 0.25em;
+            font-size: 0.55rem;
+            letter-spacing: 0.2em;
             color: var(--accent-grey);
-            max-width: 650px;
-            line-height: 1.8;
+            max-width: 600px;
+            line-height: 1.6;
             text-transform: uppercase;
         }
 
         .price-tag {
             background: #fff;
             color: #000;
-            padding: 8px 18px;
+            padding: 6px 14px;
             font-weight: 900;
-            display: inline-block;
-            margin-top: 10px;
-            letter-spacing: 0.12em;
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             text-transform: uppercase;
         }
 
-        .qr-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-
         .qr-section img {
-            width: 65px;
-            height: 65px;
+            width: 55px;
+            height: 55px;
             filter: invert(1);
-            display: block;
         }
 
         .qr-text {
             font-size: 0.5rem;
-            letter-spacing: 0.3em;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            font-weight: 700;
             color: var(--accent-grey);
+            margin-top: 5px;
         }
     </style>
 </head>
 <body>
 
-    <section class="snap-section hero-1">
-        <div class="association">
-            <span class="strapline">In association with</span>
-            <span class="brand-name">YoungMinds</span>
-        </div>
-        <div class="hero-content">
-            <h1>Lost<br>Tapes</h1>
-            <p>A Mental Health Rave</p>
-        </div>
-        <div class="uni-logo-container">
-            <img src="university_of_birmingahm.png" alt="University of Birmingham">
-        </div>
-    </section>
+    <main class="snap-container">
+        
+        <section class="snap-section hero-1">
+            <div class="association">
+                <span class="strapline">In association with</span>
+                <span class="brand-name">YoungMinds</span>
+            </div>
+            <div class="hero-content">
+                <h1>Lost<br>Tapes</h1>
+                <p>A Mental Health Rave</p>
+            </div>
+            <div class="uni-logo-container">
+                <img src="university_of_birmingahm.png" alt="University of Birmingham">
+            </div>
+        </section>
 
-    <section class="snap-section hero-2">
-        <div class="info-grid">
-            <div class="details-box">
-                <p>31 . 10 . 2026 // 19:00</p>
-                <h2>THE SHACK</h2>
-                <p>Shackleton, The Vale Village<br>B15 3SX</p>
+        <section class="snap-section hero-2">
+            <div class="info-grid">
+                <div class="details-box">
+                    <p>31 . 10 . 2026 // 19:00</p>
+                    <h2>THE SHACK</h2>
+                    <p>Shackleton, The Vale Village<br>B15 3SX</p>
+                </div>
+                <div id="timer" class="countdown-container">00:00:00:00</div>
+                <div class="collab-box">
+                    <h3>The Open Source Collaboration</h3>
+                    <p>Lost Tapes is a community-driven project. We are seeking artists and local visual designers to help shape the immersive experience.</p>
+                    <a href="mailto:hello@losttapes.uk" class="collab-link">Get Involved</a>
+                </div>
+                <div class="genres">
+                    90s / Old Skool Rave / House / Jungle / DnB / Club Classics / UKG / Modern
+                </div>
+                <div class="price-tag">£5 ENTRY - PAY AT DOOR</div>
+                <div class="qr-section">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.youngminds.org.uk" alt="QR Code">
+                    <div class="qr-text">Scan for resources</div>
+                </div>
             </div>
-            <div id="timer" class="countdown-container">00:00:00:00</div>
-            <div class="collab-box">
-                <h3>The Open Source Collaboration</h3>
-                <p>Lost Tapes is a community-driven project. We are seeking artists and local visual designers to help shape the immersive experience.</p>
-                <a href="mailto:hello@losttapes.uk" class="collab-link">Get Involved</a>
-            </div>
-            <div class="genres">
-                90s / Old Skool Rave / House / Jungle / DnB / Club Classics / UKG / Modern
-            </div>
-            <div class="price-tag">£5 ENTRY - PAY AT DOOR</div>
-            <div class="qr-section">
-                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.youngminds.org.uk" alt="QR Code">
-                <span class="qr-text">Scan for resources</span>
-            </div>
-        </div>
-    </section>
+        </section>
+
+    </main>
 
     <script>
         function updateTimer() {

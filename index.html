@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Lost Tapes | A Mental Health Rave</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,7 +15,6 @@
             --bg-2: url('grey2.png');
             --fallback-color: #111111;
             --text-primary: #ffffff;
-            /* UPDATED: Lighter grey for better legibility */
             --accent-grey: #d1d1d1; 
             --left-gutter: 8vw; 
         }
@@ -27,16 +26,24 @@
         }
 
         html {
+            /* RESTORED HEAVY DESKTOP SNAP */
             scroll-snap-type: y mandatory;
             scroll-behavior: smooth;
+            height: 100%;
+            overflow: hidden; 
         }
 
         body {
             width: 100%;
+            height: 100%;
+            overflow-y: auto;
+            scroll-snap-type: y mandatory;
             background-color: var(--fallback-color);
             color: var(--text-primary);
             font-family: 'DM Sans', sans-serif;
             -webkit-font-smoothing: antialiased;
+            /* IPHONE 7 TOUCH OPTIMIZATION */
+            -webkit-overflow-scrolling: touch;
         }
 
         .snap-section {
@@ -52,7 +59,7 @@
             position: relative;
         }
 
-        /* --- SCREEN 1: UNCHANGED --- */
+        /* --- SCREEN 1 --- */
         .hero-1 { 
             background-image: var(--bg-1); 
             align-items: flex-start;
@@ -64,7 +71,6 @@
             position: absolute;
             top: 60px;
             left: var(--left-gutter);
-            color: #ffffff;
         }
         
         .association .strapline {
@@ -86,23 +92,20 @@
         }
 
         .hero-content h1 {
-            font-size: clamp(5rem, 18vw, 11rem); 
+            font-size: clamp(4rem, 18vw, 11rem); 
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: -0.05em;
             line-height: 0.8;
             margin-left: -0.08em; 
             margin-bottom: 12px;
-            color: #ffffff;
         }
 
         .hero-content p {
-            font-size: clamp(1rem, 2.8vw, 1.3rem);
-            color: #ffffff;
+            font-size: clamp(0.9rem, 2.8vw, 1.3rem);
             letter-spacing: 0.35em;
             text-transform: uppercase;
             font-weight: 700;
-            margin-left: 0;
         }
 
         .hero-1 .uni-logo-container {
@@ -117,7 +120,7 @@
             display: block;
         }
 
-        /* --- SCREEN 2: UPDATED LEGIBILITY & TEXT --- */
+        /* --- SCREEN 2: RESTORED FULL TEXT --- */
         .hero-2 { 
             background-image: var(--bg-2); 
             align-items: center;
@@ -152,9 +155,8 @@
         }
 
         .countdown-container {
-            font-size: clamp(3rem, 12vw, 6rem);
+            font-size: clamp(2.5rem, 12vw, 6rem);
             font-weight: 700;
-            letter-spacing: -0.02em;
             font-variant-numeric: tabular-nums;
             margin: 5px 0;
         }
@@ -171,7 +173,6 @@
             letter-spacing: 0.3em;
             text-transform: uppercase;
             font-weight: 900;
-            color: #ffffff;
             margin-bottom: 12px;
         }
 
@@ -192,7 +193,16 @@
             border-bottom: 1px solid #ffffff;
             padding-bottom: 2px;
             font-weight: 700;
-            transition: opacity 0.3s;
+        }
+
+        .genres {
+            font-size: 0.6rem;
+            letter-spacing: 0.25em;
+            color: var(--accent-grey);
+            max-width: 650px;
+            line-height: 1.8;
+            text-transform: uppercase;
+            margin-top: 5px;
         }
 
         .price-tag {
@@ -207,45 +217,23 @@
             text-transform: uppercase;
         }
 
-        .genres {
-            font-size: 0.6rem;
-            letter-spacing: 0.25em;
-            color: var(--accent-grey);
-            max-width: 650px;
-            line-height: 1.8;
-            text-transform: uppercase;
-        }
-
         .qr-section {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
+            margin-top: 10px;
         }
 
-        .qr-code img {
+        .qr-section img {
             width: 65px;
             height: 65px;
             filter: invert(1);
             display: block;
         }
 
-        .qr-text {
-            font-size: 0.5rem;
-            letter-spacing: 0.3em;
-            text-transform: uppercase;
-            font-weight: 700;
-            color: var(--accent-grey);
-        }
-
         @media (max-width: 600px) {
             :root { --left-gutter: 30px; }
             .hero-1 .association { top: 30px; }
-            .association .brand-name { font-size: 1.5rem; }
             .hero-1 .uni-logo-container { bottom: 30px; }
-            .hero-1 .uni-logo-container img { height: 45px; }
-            .hero-content h1 { font-size: 4.5rem; }
-            .info-grid { gap: 20px; }
+            .hero-content h1 { font-size: 4rem; }
+            .info-grid { gap: 15px; }
         }
     </style>
 </head>
@@ -256,12 +244,10 @@
             <span class="strapline">In association with</span>
             <span class="brand-name">YoungMinds</span>
         </div>
-
         <div class="hero-content">
             <h1>Lost<br>Tapes</h1>
             <p>A Mental Health Rave</p>
         </div>
-
         <div class="uni-logo-container">
             <img src="university_of_birmingahm.png" alt="University of Birmingham">
         </div>
@@ -274,26 +260,18 @@
                 <h2>THE SHACK</h2>
                 <p>Shackleton, The Vale Village<br>B15 3SX</p>
             </div>
-
             <div id="timer" class="countdown-container">00:00:00:00</div>
-
             <div class="collab-box">
                 <h3>The Open Source Collaboration</h3>
                 <p>Lost Tapes is a community-driven project. We are seeking artists and local visual designers to help shape the immersive experience.</p>
-                <a href="mailto:hello@losttapes.com" class="collab-link">Get Involved</a>
+                <a href="mailto:hello@losttapes.uk" class="collab-link">Get Involved</a>
             </div>
-
             <div class="genres">
                 90s / Old Skool Rave / House / Jungle / DnB / Club Classics / UKG / Modern
             </div>
-
             <div class="price-tag">£5 ENTRY - PAY AT DOOR</div>
-
             <div class="qr-section">
-                <div class="qr-code">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.youngminds.org.uk" alt="YoungMinds QR Code">
-                </div>
-                <span class="qr-text">Scan for resources</span>
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.youngminds.org.uk" alt="QR">
             </div>
         </div>
     </section>
@@ -303,17 +281,11 @@
             const eventDate = new Date('October 31, 2026 19:00:00').getTime();
             const now = new Date().getTime();
             const diff = eventDate - now;
-
-            if (diff <= 0) {
-                document.getElementById('timer').innerHTML = "LIVE NOW";
-                return;
-            }
-
+            if (diff <= 0) { document.getElementById('timer').innerHTML = "LIVE NOW"; return; }
             const days = Math.floor(diff / (1000 * 60 * 60 * 24));
             const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
             const secs = Math.floor((diff % (1000 * 60)) / 1000);
-
             document.getElementById('timer').innerHTML = 
                 `${days.toString().padStart(2, '0')}:${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
         }

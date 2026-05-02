@@ -10,13 +10,11 @@
 
     <style>
         :root {
-            /* FIX 1: Tells browsers NOT to turn your text black in dark mode */
             color-scheme: dark;
             --hero-height: 100dvh; 
-            --bg-1: url('grey.png'); 
-            --bg-2: url('grey2.png');
+            --bg-1: url('grey.webp'); 
+            --bg-2: url('grey2.webp');
             --fallback-color: #111111;
-            /* FIX 2: Stronger white definition */
             --text-primary: #ffffff;
             --accent-grey: #d1d1d1; 
             --left-gutter: 8vw; 
@@ -28,7 +26,6 @@
             box-sizing: border-box;
         }
 
-        /* FIX 3: Container-based snapping is more reliable for iPhone 13 than body-snapping */
         html, body {
             height: 100%;
             overflow: hidden; 
@@ -68,27 +65,17 @@
 
         .hero-1 .association {
             position: absolute;
-            top: 35px; /* Optical Edge spacing */
+            top: 35px;
             left: var(--left-gutter);
             display: flex;
             align-items: baseline; 
             gap: 7px; 
             text-transform: uppercase;
             white-space: nowrap;
-            color: #ffffff !important;
         }
         
-        .association .strapline {
-            font-size: 0.65rem; 
-            letter-spacing: 0.1em;
-            font-weight: 500;
-        }
-        
-        .association .brand-name {
-            font-size: 1.4rem; 
-            font-weight: 900;
-            letter-spacing: -0.02em;
-        }
+        .association .strapline { font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 500; }
+        .association .brand-name { font-size: 1.4rem; font-weight: 900; letter-spacing: -0.02em; }
 
         .hero-content h1 {
             font-size: clamp(4rem, 18vw, 10.5rem); 
@@ -98,7 +85,6 @@
             line-height: 0.72; 
             margin-left: -0.08em; 
             margin-bottom: 12px;
-            color: #ffffff !important;
         }
 
         .hero-content p {
@@ -107,12 +93,11 @@
             text-transform: uppercase;
             font-weight: 800;
             padding-left: 0.1em;
-            color: #ffffff !important;
         }
 
         .hero-1 .uni-logo-container {
             position: absolute;
-            bottom: 35px; /* Optical Edge spacing */
+            bottom: 35px;
             left: var(--left-gutter);
         }
 
@@ -122,7 +107,7 @@
             display: block;
         }
 
-        /* --- SCREEN 2: ALL CONTENT RESTORED --- */
+        /* --- SCREEN 2 --- */
         .hero-2 { 
             background-image: var(--bg-2); 
             align-items: center;
@@ -136,8 +121,10 @@
             gap: 15px; 
             max-width: 800px;
             width: 100%;
-            padding: 0 25px;
+            padding: 20px 25px;
             align-items: center;
+            overflow-y: auto;
+            max-height: 100vh;
         }
 
         .details-box h2 {
@@ -146,7 +133,6 @@
             text-transform: uppercase;
             font-weight: 800;
             margin: 4px 0;
-            color: #ffffff !important;
         }
 
         .details-box p {
@@ -162,7 +148,59 @@
             font-weight: 700;
             font-variant-numeric: tabular-nums;
             margin: 5px 0;
-            color: #ffffff !important;
+        }
+
+        /* --- CONTACT FORM --- */
+        .contact-form {
+            width: 100%;
+            max-width: 350px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin: 10px 0;
+        }
+
+        .contact-form input, 
+        .contact-form textarea {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 12px;
+            color: #fff;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            outline: none;
+            text-align: center;
+            resize: none;
+        }
+
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        #submit-btn {
+            background: #fff;
+            color: #000;
+            border: none;
+            padding: 12px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        #result-msg {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 800;
+            display: none;
+            margin: 10px 0;
+            padding: 15px;
+            border: 2px solid #fff;
         }
 
         .collab-box {
@@ -171,62 +209,14 @@
             max-width: 500px;
         }
 
-        .collab-box h3 {
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            font-weight: 900;
-            margin-bottom: 8px;
-            color: #ffffff !important;
-        }
+        .collab-box h3 { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 900; margin-bottom: 8px; }
+        .collab-box p { font-size: 0.8rem; color: var(--accent-grey); line-height: 1.5; margin-bottom: 5px; }
 
-        .collab-box p {
-            font-size: 0.75rem;
-            color: var(--accent-grey);
-            line-height: 1.5;
-            margin-bottom: 12px;
-        }
-
-        .collab-link {
-            font-size: 0.7rem;
-            color: #ffffff !important;
-            text-transform: uppercase;
-            text-decoration: none;
-            border-bottom: 1px solid #ffffff;
-            font-weight: 700;
-        }
-
-        .genres {
-            font-size: 0.55rem;
-            letter-spacing: 0.2em;
-            color: var(--accent-grey);
-            max-width: 600px;
-            line-height: 1.6;
-            text-transform: uppercase;
-        }
-
-        .price-tag {
-            background: #fff;
-            color: #000;
-            padding: 6px 14px;
-            font-weight: 900;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-        }
-
-        .qr-section img {
-            width: 55px;
-            height: 55px;
-            filter: invert(1);
-        }
-
-        .qr-text {
-            font-size: 0.5rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--accent-grey);
-            margin-top: 5px;
-        }
+        .genres { font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent-grey); text-transform: uppercase; max-width: 600px; line-height: 1.6; }
+        .price-tag { background: #fff; color: #000; padding: 6px 14px; font-weight: 900; font-size: 0.8rem; text-transform: uppercase; }
+        
+        .qr-section img { width: 55px; height: 55px; filter: invert(1); }
+        .qr-text { font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-grey); margin-top: 5px; }
     </style>
 </head>
 <body>
@@ -243,7 +233,7 @@
                 <p>A Mental Health Rave</p>
             </div>
             <div class="uni-logo-container">
-                <img src="university_of_birmingahm.png" alt="University of Birmingham">
+                <img src="university_of_birmingham.png" alt="University of Birmingham">
             </div>
         </section>
 
@@ -254,16 +244,28 @@
                     <h2>THE SHACK</h2>
                     <p>Shackleton, The Vale Village<br>B15 3SX</p>
                 </div>
+                
                 <div id="timer" class="countdown-container">00:00:00:00</div>
+
+                <form id="form" class="contact-form">
+                    <input type="hidden" name="access_key" value="acfc2a3f-d364-4baf-8389-e7073baa482f">
+                    <input type="checkbox" name="botcheck" style="display: none;">
+                    
+                    <input type="email" name="email" placeholder="Email Address" required>
+                    <textarea name="message" placeholder="Message / Get Involved" rows="2" required></textarea>
+                    
+                    <button type="submit" id="submit-btn">Join the movement</button>
+                    <div id="result-msg">SENT. Welcome to the underground.</div>
+                </form>
+
                 <div class="collab-box">
                     <h3>The Open Source Collaboration</h3>
                     <p>Lost Tapes is a community-driven project. We are seeking artists and local visual designers to help shape the immersive experience.</p>
-                    <a href="mailto:hello@losttapes.uk" class="collab-link">Get Involved</a>
                 </div>
-                <div class="genres">
-                    90s / Old Skool Rave / House / Jungle / DnB / Club Classics / UKG / Modern
-                </div>
+
+                <div class="genres">90s / Old Skool Rave / House / Jungle / DnB / Club Classics / UKG / Modern</div>
                 <div class="price-tag">£5 ENTRY - PAY AT DOOR</div>
+                
                 <div class="qr-section">
                     <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.youngminds.org.uk" alt="QR Code">
                     <div class="qr-text">Scan for resources</div>
@@ -274,17 +276,51 @@
     </main>
 
     <script>
+        const form = document.getElementById('form');
+        const result = document.getElementById('result-msg');
+        const btn = document.getElementById('submit-btn');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            btn.innerHTML = "SENDING...";
+            btn.disabled = true;
+
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: json
+            })
+            .then(async (response) => {
+                if (response.status == 200) {
+                    form.style.display = "none";
+                    result.style.display = "block";
+                } else {
+                    btn.innerHTML = "ERROR - TRY AGAIN";
+                    btn.disabled = false;
+                }
+            })
+            .catch(error => {
+                btn.innerHTML = "NETWORK ERROR";
+                btn.disabled = false;
+            });
+        });
+
         function updateTimer() {
             const eventDate = new Date('October 31, 2026 19:00:00').getTime();
             const now = new Date().getTime();
             const diff = eventDate - now;
             if (diff <= 0) { document.getElementById('timer').innerHTML = "LIVE NOW"; return; }
-            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const secs = Math.floor((diff % (1000 * 60)) / 1000);
-            document.getElementById('timer').innerHTML = 
-                `${days.toString().padStart(2, '0')}:${hours.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+            const units = [
+                Math.floor(diff / (1000 * 60 * 60 * 24)),
+                Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
+                Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
+                Math.floor((diff % (1000 * 60)) / 1000)
+            ];
+            document.getElementById('timer').innerHTML = units.map(u => u.toString().padStart(2, '0')).join(':');
         }
         setInterval(updateTimer, 1000);
         updateTimer();

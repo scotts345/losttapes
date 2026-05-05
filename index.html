@@ -14,10 +14,21 @@
     .snap-container{height:100dvh;overflow-y:scroll;scroll-snap-type:y mandatory;-webkit-overflow-scrolling:touch}
     .snap-section{width:100%;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;position:relative;background-size:cover;background-repeat:no-repeat}
 
-    /* ── SCREEN 1: MOBILE (Spaced & Optically Aligned) ── */
+    /* ── SCREEN 1: MOBILE (Centered Horizontally) ── */
     .hero-1{background-image:url('grey.webp');background-position:center center;}
+    
+    #el-subtitle{
+      position:absolute;
+      top:3.349178743622996%;
+      left:50%; transform:translateX(-50%); /* Centered */
+      font-size:0.9rem;font-weight:900;letter-spacing:0.15em;
+      text-transform:uppercase;color:#34454D;white-space:nowrap;
+    }
+
     #el-association{
-      position:absolute;left:26.7128205128206%;top:6.5431693989071125%;
+      position:absolute;
+      top:6.5431693989071125%;
+      left:50%; transform:translateX(-50%); /* Centered */
       display:flex;flex-direction:column;white-space:nowrap;text-transform:uppercase;
       opacity:1;color:#ffffff;letter-spacing:-0.02em;text-align:center;line-height:1.1;
     }
@@ -25,82 +36,73 @@
     #el-association .assoc-big{font-size:2rem;font-weight:900}
     
     #el-lost{
-      position:absolute;left:32.12564102564101%;top:70%; /* Nudged up slightly */
+      position:absolute;
+      top:70%;
+      left:50%; transform:translateX(-50%); /* Centered */
       font-size:calc(16vw * 1.119047619047619);font-weight:800;line-height:1;
       color:#34454D;opacity:0.85;text-transform:uppercase;
     }
     #el-tapes{
-      position:absolute;left:27.112820512820605%;
-      top:78.5%; /* Generous breathing room between LOST and TAPES */
+      position:absolute;
+      top:78.5%;
+      left:50%; transform:translateX(-50%); /* Centered */
       font-size:calc(16vw * 1.119047619047619);font-weight:800;line-height:1;
       color:#34454D;opacity:0.85;text-transform:uppercase;
     }
-    #el-subtitle{
-      position:absolute;left:26.812829902844555%;top:3.349178743622996%;
-      font-size:0.9rem;font-weight:900;letter-spacing:0.15em;
-      text-transform:uppercase;color:#34454D;
-    }
-    /* Optical nudge for the logo on mobile */
-    #el-logo{position:absolute;left:36.5%;top:90.47158603355533%;}
-    #el-logo img{height:calc(clamp(40px,9vw,58px) * 1.3333333333333333);width:auto;}
 
-    /* ── SCREEN 1: TABLET ── */
+    #el-logo{
+      position:absolute;
+      top:90.47158603355533%;
+      left:50%; transform:translateX(-50%); /* Centered */
+    }
+    #el-logo img{height:calc(clamp(40px,9vw,58px) * 1.3333333333333333);width:auto;display:block}
+
+    /* ── SCREEN 1: TABLET (Centered Horizontally) ── */
     @media(min-width:769px) and (max-width:1024px){
-      #el-association{left:35.41666666666667%;top:6.9071043254247835%;}
+      #el-subtitle{
+        top:2.9945363112486096%;
+        left:50%; transform:translateX(-50%);
+        font-size:1.218rem;letter-spacing:0.25em;
+      }
+      #el-association{
+        top:6.9071043254247835%;
+        left:50%; transform:translateX(-50%);
+      }
       #el-association .assoc-big{font-size:2.5rem;font-weight:900}
-      #el-lost{left:40.29166507720945%;top:71%;font-size:calc(15vw * 0.7142857142857143);}
-      #el-tapes{left:37.42083333333333%;top:80%;font-size:calc(15vw * 0.7142857142857143);}
-      #el-subtitle{left:36.66667461395263%;top:2.9945363112486096%;font-size:1.218rem;letter-spacing:0.25em;}
-      #el-logo{left:43.2%;top:90.46720777834685%;}
+      #el-lost{
+        top:71%;
+        left:50%; transform:translateX(-50%);
+        font-size:calc(15vw * 0.7142857142857143);
+      }
+      #el-tapes{
+        top:80%;
+        left:50%; transform:translateX(-50%);
+        font-size:calc(15vw * 0.7142857142857143);
+      }
+      #el-logo{
+        top:90.46720777834685%;
+        left:50%; transform:translateX(-50%);
+      }
     }
 
-    /* ── SCREEN 1: DESKTOP (Optical Nudge & Max-Left) ── */
+    /* ── SCREEN 1: DESKTOP (Untouched) ── */
     @media(min-width:1025px){
       .hero-1{background-position:68% center;}
-      
       #el-subtitle, #el-association, #el-lost, #el-tapes, #el-logo {
         position: absolute !important;
-        left: -4vw !important; /* Pushed further left for alignment */
+        left: -4vw !important; 
+        transform: none !important;
         width: 35vw; 
         display: flex;
         justify-content: flex-end;
         text-align: right;
       }
-
-      #el-subtitle {
-        top: 19%;
-        font-size: 1rem;
-        color: var(--brand-cream);
-        letter-spacing: 0.35em;
-        font-weight: 900;
-      }
-
-      #el-association {
-        top: 22.5%;
-        flex-direction: row;
-        gap: 8px;
-        align-items: baseline;
-      }
+      #el-subtitle { top: 19%; font-size: 1rem; color: var(--brand-cream); letter-spacing: 0.35em; font-weight: 900; }
+      #el-association { top: 22.5%; flex-direction: row; gap: 8px; align-items: baseline; }
       #el-association .assoc-small { font-size: 0.75rem; }
       #el-association .assoc-big { font-size: 1.5rem; }
-
-      #el-lost {
-        top: 26%;
-        font-size: clamp(4rem, 15vw, 10.5rem);
-        color: #F8E4CC;
-        line-height: 0.8;
-        font-weight: 600;
-      }
-
-      #el-tapes {
-        top: 40.5%; /* Space between LOST and TAPES */
-        font-size: clamp(4rem, 15vw, 10.5rem);
-        color: #F8E4CC;
-        line-height: 0.8;
-        font-weight: 600;
-      }
-
-      /* Optical nudge: Logo container pushed 0.5vw further left to align with text edge */
+      #el-lost { top: 26%; font-size: clamp(4rem, 15vw, 10.5rem); color: #F8E4CC; line-height: 0.8; font-weight: 600; }
+      #el-tapes { top: 40.5%; font-size: clamp(4rem, 15vw, 10.5rem); color: #F8E4CC; line-height: 0.8; font-weight: 600; }
       #el-logo { top: 58.5%; left: -4.5vw !important; }
       #el-logo img { height: 65px; width: auto; }
     }
@@ -127,13 +129,13 @@
 <body>
   <main class="snap-container">
     <section class="snap-section hero-1">
+      <p id="el-subtitle">A Mental Health Rave</p>
       <div id="el-association">
         <span class="assoc-small">In association with</span>
         <span class="assoc-big">YoungMinds</span>
       </div>
       <span id="el-lost">Lost</span>
       <span id="el-tapes">Tapes</span>
-      <p id="el-subtitle">A Mental Health Rave</p>
       <div id="el-logo">
         <img src="university_of_birmingham.png" alt="University of Birmingham">
       </div>

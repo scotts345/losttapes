@@ -1,329 +1,245 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Lost Tapes | A Mental Health Rave</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Lost Tapes | A Mental Health Rave</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand-cream: #f8e4cc;
+      --accent-grey: #d1d1d1;
+      --bg-dark: #111;
+    }
 
-    <style>
-        :root {
-            color-scheme: dark;
-            --hero-height: 100dvh; 
-            --bg-1: url('grey.webp'); 
-            --bg-2: url('grey2.webp');
-            --fallback-color: #111111;
-            --text-primary: #ffffff;
-            --accent-grey: #d1d1d1; 
-            --left-gutter: 8vw; 
-        }
+    *{margin:0;padding:0;box-sizing:border-box}
+    html,body{height:100%;overflow:hidden;background:var(--bg-dark);font-family:'DM Sans',sans-serif;-webkit-font-smoothing:antialiased;color:#fff}
+    
+    .snap-container{height:100dvh;overflow-y:scroll;scroll-snap-type:y mandatory;-webkit-overflow-scrolling:touch}
+    .snap-section{width:100%;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;position:relative;background-size:cover;background-repeat:no-repeat}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    /* --- SCREEN 1: THE HERO --- */
+    .hero-1 {
+      background-image: url('grey.webp');
+      display: flex;
+      flex-direction: column;
+      justify-content: center; 
+      align-items: center;     
+    }
 
-        html, body {
-            height: 100%;
-            overflow: hidden; 
-            background-color: var(--fallback-color);
-            font-family: 'DM Sans', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            color: var(--text-primary) !important;
-        }
+    /* DESKTOP (Large Screens) */
+    @media (min-width: 1025px) {
+      .hero-1 { display: block; background-position: 68% center; } 
 
-        .snap-container {
-            height: 100dvh;
-            overflow-y: scroll;
-            scroll-snap-type: y mandatory;
-            -webkit-overflow-scrolling: touch;
-        }
+      .association-wrap {
+        position: absolute;
+        left: 19.5%; top: 19.7%;
+        display: flex; align-items: baseline; gap: 7px;
+        text-transform: uppercase; white-space: nowrap;
+      }
 
-        .snap-section {
-            width: 100%;
-            height: 100dvh;
-            display: flex;
-            flex-direction: column;
-            background-size: cover;
-            background-position: center center;
-            background-repeat: no-repeat;
-            scroll-snap-align: start;
-            scroll-snap-stop: always;
-            position: relative;
-        }
+      .title-lost {
+        position: absolute;
+        left: 14.5%; top: 26%;
+        font-size: clamp(4rem, 18vw, 10.5rem);
+        font-weight: 600; line-height: 1; letter-spacing: -0.04em;
+        color: var(--brand-cream); text-transform: uppercase;
+      }
 
-        /* --- SCREEN 1 --- */
-        .hero-1 { 
-            background-image: var(--bg-1); 
-            align-items: flex-start;
-            justify-content: center; 
-            padding-left: var(--left-gutter);
-        }
+      .title-tapes {
+        position: absolute;
+        left: 8.9%; top: 40.7%;
+        font-size: clamp(4rem, 18vw, 10.5rem);
+        font-weight: 600; line-height: 1; letter-spacing: -0.04em;
+        color: var(--brand-cream); text-transform: uppercase;
+      }
 
-        .hero-1 .association {
-            position: absolute;
-            top: 35px;
-            left: var(--left-gutter);
-            display: flex;
-            align-items: baseline; 
-            gap: 7px; 
-            text-transform: uppercase;
-            white-space: nowrap;
-        }
-        
-        .association .strapline { font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 500; }
-        .association .brand-name { font-size: 1.4rem; font-weight: 900; letter-spacing: -0.02em; }
+      .rave-subtitle {
+        position: absolute;
+        left: 22.1%; top: 17.5%;
+        font-size: clamp(0.8rem, 2.5vw, 1.2rem);
+        font-weight: 900; text-transform: uppercase;
+        color: var(--brand-cream); white-space: nowrap;
+      }
 
-        .hero-content h1 {
-            font-size: clamp(4rem, 18vw, 10.5rem); 
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: -0.06em; 
-            line-height: 0.72; 
-            margin-left: -0.08em; 
-            margin-bottom: 12px;
-        }
+      .uni-logo-container {
+        position: absolute;
+        left: 65.7%; top: 14.2%;
+      }
+    }
 
-        .hero-content p {
-            font-size: clamp(0.8rem, 2.5vw, 1.2rem);
-            letter-spacing: 0.5em; 
-            text-transform: uppercase;
-            font-weight: 800;
-            padding-left: 0.1em;
-        }
+    /* TABLET (iPad/Medium Screens) */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .hero-1 { background-position: center center; text-align: center; padding: 40px; }
+      
+      .association-wrap { margin-bottom: 20px; }
+      .association-wrap span:last-child { font-size: 2.5rem; } /* Slightly bigger for tablet space */
 
-        .hero-1 .uni-logo-container {
-            position: absolute;
-            bottom: 35px;
-            left: var(--left-gutter);
-        }
+      .title-lost, .title-tapes {
+        font-size: 15vw;
+        line-height: 0.9;
+        color: var(--brand-cream); text-transform: uppercase;
+        font-weight: 600;
+      }
 
-        .uni-logo-container img {
-            height: clamp(45px, 10vw, 65px); 
-            width: auto;
-            display: block;
-        }
+      .rave-subtitle {
+        margin-top: 20px;
+        font-size: 1.5rem;
+        letter-spacing: 0.3em;
+        color: var(--brand-cream); text-transform: uppercase;
+        font-weight: 900;
+      }
 
-        /* --- SCREEN 2 --- */
-        .hero-2 { 
-            background-image: var(--bg-2); 
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
+      .uni-logo-container { margin-top: 40px; }
+    }
 
-        .info-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 15px; 
-            max-width: 800px;
-            width: 100%;
-            padding: 20px 25px;
-            align-items: center;
-            overflow-y: auto;
-            max-height: 100vh;
-        }
+    /* MOBILE (Small Screens) */
+    @media (max-width: 768px) {
+      .hero-1 { background-position: center center; padding: 20px; text-align: center; }
 
-        .details-box h2 {
-            font-size: clamp(1.5rem, 6vw, 2.2rem);
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            font-weight: 800;
-            margin: 4px 0;
-        }
+      .association-wrap {
+        margin-bottom: 10px;
+        display: flex; flex-direction: column; align-items: center;
+        text-transform: uppercase;
+      }
 
-        .details-box p {
-            font-size: 0.8rem;
-            color: var(--accent-grey);
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            line-height: 1.4;
-        }
+      .title-lost, .title-tapes {
+        display: block;
+        font-size: 18vw;
+        font-weight: 600; line-height: 0.85;
+        color: var(--brand-cream); text-transform: uppercase;
+      }
 
-        .countdown-container {
-            font-size: clamp(2.5rem, 11vw, 5.5rem);
-            font-weight: 700;
-            font-variant-numeric: tabular-nums;
-            margin: 5px 0;
-        }
+      .rave-subtitle {
+        margin-top: 15px;
+        font-size: 1rem; font-weight: 900;
+        letter-spacing: 0.2em; text-transform: uppercase;
+        color: var(--brand-cream);
+      }
 
-        /* --- CONTACT FORM --- */
-        .contact-form {
-            width: 100%;
-            max-width: 350px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin: 10px 0;
-        }
+      .uni-logo-container {
+        position: absolute;
+        bottom: 40px; 
+        left: 50%; transform: translateX(-50%);
+      }
+    }
 
-        .contact-form input, 
-        .contact-form textarea {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 12px;
-            color: #fff;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 0.85rem;
-            outline: none;
-            text-align: center;
-            resize: none;
-        }
+    /* Shared Typography[cite: 5] */
+    .association-wrap span:first-child { font-size: 0.65rem; font-weight: 900; text-transform: uppercase; }
+    .association-wrap span:last-child { font-size: 1.4rem; font-weight: 900; text-transform: uppercase; }
+    
+    .uni-logo-container img {
+      height: clamp(45px, 10vw, 65px);
+      width: auto;
+      display: block;
+    }
 
-        .contact-form input::placeholder,
-        .contact-form textarea::placeholder {
-            color: rgba(255, 255, 255, 0.4);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        #submit-btn {
-            background: #fff;
-            color: #000;
-            border: none;
-            padding: 12px;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            cursor: pointer;
-            font-size: 0.8rem;
-        }
-
-        #result-msg {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-weight: 800;
-            display: none;
-            margin: 10px 0;
-            padding: 15px;
-            border: 2px solid #fff;
-        }
-
-        .collab-box {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 15px;
-            max-width: 500px;
-        }
-
-        .collab-box h3 { font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 900; margin-bottom: 8px; }
-        .collab-box p { font-size: 0.8rem; color: var(--accent-grey); line-height: 1.5; margin-bottom: 5px; }
-
-        .genres { font-size: 0.6rem; letter-spacing: 0.2em; color: var(--accent-grey); text-transform: uppercase; max-width: 600px; line-height: 1.6; }
-        .price-tag { background: #fff; color: #000; padding: 6px 14px; font-weight: 900; font-size: 0.8rem; text-transform: uppercase; }
-        
-        .qr-section img { width: 55px; height: 55px; filter: invert(1); }
-        .qr-text { font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-grey); margin-top: 5px; }
-    </style>
+    /* --- SCREEN 2: DETAILS --- */
+    .hero-2{background-image:url('grey2.webp');background-position: center center;display:flex;align-items:center;justify-content:center;text-align:center}
+    .info-grid{display:flex;flex-direction:column;gap:15px;max-width:800px;width:100%;padding:20px 25px;align-items:center;overflow-y:auto;max-height:100vh}
+    .details-box h2{font-size:clamp(1.5rem,6vw,2.2rem);letter-spacing:0.15em;text-transform:uppercase;font-weight:800;margin:4px 0}
+    .details-box p{font-size:0.8rem;color:var(--accent-grey);letter-spacing:0.15em;text-transform:uppercase;line-height:1.4}
+    .countdown{font-size:clamp(2.5rem,11vw,5.5rem);font-weight:700;font-variant-numeric:tabular-nums;margin:5px 0}
+    .contact-form{width:100%;max-width:350px;display:flex;flex-direction:column;gap:8px;margin:10px 0}
+    .contact-form input,.contact-form textarea{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.2);padding:12px;color:#fff;font-family:inherit;font-size:0.85rem;outline:none;text-align:center;resize:none}
+    .contact-form input::placeholder,.contact-form textarea::placeholder{color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:0.1em}
+    #submit-btn{background:#fff;color:#000;border:none;padding:12px;font-weight:900;text-transform:uppercase;letter-spacing:0.1em;cursor:pointer;font-size:0.8rem;font-family:inherit}
+    #result-msg{font-size:0.9rem;text-transform:uppercase;letter-spacing:0.1em;font-weight:800;display:none;margin:10px 0;padding:15px;border:2px solid #fff}
+    .collab-box{border-top:1px solid rgba(255,255,255,.1);padding-top:15px;max-width:500px}
+    .collab-box h3{font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:900;margin-bottom:8px}
+    .collab-box p{font-size:0.8rem;color:var(--accent-grey);line-height:1.5}
+    .genres{font-size:0.6rem;letter-spacing:0.2em;color:var(--accent-grey);text-transform:uppercase;max-width:600px;line-height:1.6}
+    .price-tag{background:#fff;color:#000;padding:6px 14px;font-weight:900;font-size:0.8rem;text-transform:uppercase}
+    .qr-section{display:flex;flex-direction:column;align-items:center;gap:5px}
+    .qr-section img{width:55px;height:55px;filter:invert(1)}
+    .qr-text{font-size:0.55rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--accent-grey)}
+  </style>
 </head>
 <body>
+  <main class="snap-container">
 
-    <main class="snap-container">
-        
-        <section class="snap-section hero-1">
-            <div class="association">
-                <span class="strapline">In association with</span>
-                <span class="brand-name">YoungMinds</span>
-            </div>
-            <div class="hero-content">
-                <h1>Lost<br>Tapes</h1>
-                <p>A Mental Health Rave</p>
-            </div>
-            <div class="uni-logo-container">
-                <img src="university_of_birmingham.png" alt="University of Birmingham">
-            </div>
-        </section>
+    <section class="snap-section hero-1">
+      <div class="association-wrap">
+        <span>In association with</span>
+        <span>YoungMinds</span>
+      </div>
 
-        <section class="snap-section hero-2">
-            <div class="info-grid">
-                <div class="details-box">
-                    <p>31 . 10 . 2026 // 19:00</p>
-                    <h2>THE SHACK</h2>
-                    <p>Shackleton, The Vale Village<br>B15 3SX</p>
-                </div>
-                
-                <div id="timer" class="countdown-container">00:00:00:00</div>
+      <h1 class="title-lost">Lost</h1>
+      <h1 class="title-tapes">Tapes</h1>
 
-                <form id="form" class="contact-form">
-                    <input type="hidden" name="access_key" value="acfc2a3f-d364-4baf-8389-e7073baa482f">
-                    <input type="checkbox" name="botcheck" style="display: none;">
-                    
-                    <input type="email" name="email" placeholder="Email Address" required>
-                    <textarea name="message" placeholder="Message / Get Involved" rows="2" required></textarea>
-                    
-                    <button type="submit" id="submit-btn">Join the movement</button>
-                    <div id="result-msg">SENT. Welcome to the underground.</div>
-                </form>
+      <p class="rave-subtitle">A Mental Health Rave</p>
 
-                <div class="collab-box">
-                    <h3>The Open Source Collaboration</h3>
-                    <p>Lost Tapes is a community-driven project. We are seeking artists and local visual designers to help shape the immersive experience.</p>
-                </div>
+      <div class="uni-logo-container">
+        <img src="university_of_birmingham.png" alt="University of Birmingham">
+      </div>
+    </section>
 
-                <div class="genres">90s / Old Skool Rave / House / Jungle / DnB / Club Classics / UKG / Modern</div>
-                <div class="price-tag">£5 ENTRY - PAY AT DOOR</div>
-                
-                <div class="qr-section">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.youngminds.org.uk" alt="QR Code">
-                    <div class="qr-text">Scan for resources</div>
-                </div>
-            </div>
-        </section>
+    <section class="snap-section hero-2">
+      <div class="info-grid">
+        <div class="details-box">
+          <p>31 . 10 . 2026 // 19:00</p>
+          <h2>THE SHACK</h2>
+          <p>Shackleton, The Vale Village<br>B15 3SX</p>
+        </div>
+        <div id="timer" class="countdown">00:00:00:00</div>
+        <form id="form" class="contact-form">
+          <input type="hidden" name="access_key" value="acfc2a3f-d364-4baf-8389-re7073baa482f">
+          <input type="checkbox" name="botcheck" style="display:none">
+          <input type="email" name="email" placeholder="Email Address" required>
+          <textarea name="message" placeholder="Message / Get Involved" rows="2" required></textarea>
+          <button type="submit" id="submit-btn">Join the movement</button>
+          <div id="result-msg">SENT. Welcome to the underground.</div>
+        </form>
+        <div class="collab-box">
+          <h3>The Open Source Collaboration</h3>
+          <p>Lost Tapes is a community-driven project. We are seeking artists and local visual designers to help shape the immersive experience.</p>
+        </div>
+        <div class="genres">90s / Old Skool Rave / House / Jungle / DnB / Club Classics / UKG / Modern</div>
+        <div class="price-tag">£5 ENTRY - PAY AT DOOR</div>
+        <div class="qr-section">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.youngminds.org.uk" alt="QR Code">
+          <div class="qr-text">Scan for resources</div>
+        </div>
+      </div>
+    </section>
 
-    </main>
+  </main>
 
-    <script>
-        const form = document.getElementById('form');
-        const result = document.getElementById('result-msg');
-        const btn = document.getElementById('submit-btn');
+  <script>
+    (function(){
+      const target = new Date("October 31, 2026 19:00:00");
+      const el = document.getElementById("timer");
+      function tick(){
+        const diff = target - Date.now();
+        if(diff <= 0){ el.textContent = "LIVE NOW"; return; }
+        const d = String(Math.floor(diff/86400000)).padStart(2,"0");
+        const h = String(Math.floor(diff%86400000/3600000)).padStart(2,"0");
+        const m = String(Math.floor(diff%3600000/60000)).padStart(2,"0");
+        const s = String(Math.floor(diff%60000/1000)).padStart(2,"0");
+        el.textContent = d+":"+h+":"+m+":"+s;
+      }
+      tick(); setInterval(tick,1000);
+    })();
 
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            btn.innerHTML = "SENDING...";
-            btn.disabled = true;
-
-            const formData = new FormData(form);
-            const object = Object.fromEntries(formData);
-            const json = JSON.stringify(object);
-
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: json
-            })
-            .then(async (response) => {
-                if (response.status == 200) {
-                    form.style.display = "none";
-                    result.style.display = "block";
-                } else {
-                    btn.innerHTML = "ERROR - TRY AGAIN";
-                    btn.disabled = false;
-                }
-            })
-            .catch(error => {
-                btn.innerHTML = "NETWORK ERROR";
-                btn.disabled = false;
-            });
-        });
-
-        function updateTimer() {
-            const eventDate = new Date('October 31, 2026 19:00:00').getTime();
-            const now = new Date().getTime();
-            const diff = eventDate - now;
-            if (diff <= 0) { document.getElementById('timer').innerHTML = "LIVE NOW"; return; }
-            const units = [
-                Math.floor(diff / (1000 * 60 * 60 * 24)),
-                Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)),
-                Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)),
-                Math.floor((diff % (1000 * 60)) / 1000)
-            ];
-            document.getElementById('timer').innerHTML = units.map(u => u.toString().padStart(2, '0')).join(':');
-        }
-        setInterval(updateTimer, 1000);
-        updateTimer();
-    </script>
+    (function(){
+      const form = document.getElementById("form");
+      const result = document.getElementById("result-msg");
+      const btn = document.getElementById("submit-btn");
+      form.addEventListener("submit", function(e){
+        e.preventDefault();
+        btn.textContent = "SENDING..."; btn.disabled = true;
+        fetch("https://api.web3forms.com/submit",{
+          method:"POST",
+          headers:{"Content-Type":"application/json","Accept":"application/json"},
+          body: JSON.stringify(Object.fromEntries(new FormData(form)))
+        }).then(r=>r.json()).then(d=>{
+          if(d.success){ result.style.display="block"; form.style.display="none"; }
+          else { btn.textContent="ERROR — TRY AGAIN"; btn.disabled=false; }
+        }).catch(()=>{ btn.textContent="ERROR — TRY AGAIN"; btn.disabled=false; });
+      });
+    })();
+  </script>
 </body>
 </html>

@@ -20,7 +20,7 @@
     #el-subtitle{
       position:absolute;
       top:3.349178743622996%;
-      left:50%; transform:translateX(-50%); /* Centered */
+      left:50%; transform:translateX(-50%);
       font-size:0.9rem;font-weight:900;letter-spacing:0.15em;
       text-transform:uppercase;color:#34454D;white-space:nowrap;
     }
@@ -28,7 +28,7 @@
     #el-association{
       position:absolute;
       top:6.5431693989071125%;
-      left:50%; transform:translateX(-50%); /* Centered */
+      left:50%; transform:translateX(-50%);
       display:flex;flex-direction:column;white-space:nowrap;text-transform:uppercase;
       opacity:1;color:#ffffff;letter-spacing:-0.02em;text-align:center;line-height:1.1;
     }
@@ -38,14 +38,14 @@
     #el-lost{
       position:absolute;
       top:70%;
-      left:50%; transform:translateX(-50%); /* Centered */
+      left:50%; transform:translateX(-50%);
       font-size:calc(16vw * 1.119047619047619);font-weight:800;line-height:1;
       color:#34454D;opacity:0.85;text-transform:uppercase;
     }
     #el-tapes{
       position:absolute;
       top:78.5%;
-      left:50%; transform:translateX(-50%); /* Centered */
+      left:50%; transform:translateX(-50%);
       font-size:calc(16vw * 1.119047619047619);font-weight:800;line-height:1;
       color:#34454D;opacity:0.85;text-transform:uppercase;
     }
@@ -53,7 +53,7 @@
     #el-logo{
       position:absolute;
       top:90.47158603355533%;
-      left:50%; transform:translateX(-50%); /* Centered */
+      left:50%; transform:translateX(-50%);
     }
     #el-logo img{height:calc(clamp(40px,9vw,58px) * 1.3333333333333333);width:auto;display:block}
 
@@ -85,7 +85,7 @@
       }
     }
 
-    /* ── SCREEN 1: DESKTOP (Untouched) ── */
+    /* ── SCREEN 1: DESKTOP ── */
     @media(min-width:1025px){
       .hero-1{background-position:68% center;}
       #el-subtitle, #el-association, #el-lost, #el-tapes, #el-logo {
@@ -110,6 +110,12 @@
     /* ── SCREEN 2: INFO GRID ── */
     .hero-2{background-image:url('grey2.webp');display:flex;align-items:center;justify-content:center;text-align:center}
     .info-grid{display:flex;flex-direction:column;gap:15px;max-width:800px;width:100%;padding:20px 25px;align-items:center;overflow-y:auto;max-height:100vh}
+    
+    /* Mobile/Tablet vertical padding safety patch */
+    @media(max-width:1024px){
+      .info-grid{padding:40px 25px 80px 25px}
+    }
+
     .details-box h2{font-size:clamp(1.5rem,6vw,2.2rem);letter-spacing:0.15em;text-transform:uppercase;font-weight:800;margin:4px 0}
     .details-box p{font-size:0.8rem;color:var(--accent-grey);letter-spacing:0.15em;text-transform:uppercase;line-height:1.4}
     .countdown{font-size:clamp(2.5rem,11vw,5.5rem);font-weight:700;font-variant-numeric:tabular-nums;margin:5px 0}
